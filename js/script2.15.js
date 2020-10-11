@@ -26,6 +26,7 @@ let personalMovieDB = {
    privat: false,
 };
 
+
 for (let i = 0; i < 2; i++) {
    let a = prompt("Один из последних просмотренных фильмов?", ""),
       b = prompt("На сколько оцените его?", "");
@@ -40,6 +41,7 @@ for (let i = 0; i < 2; i++) {
 
    personalMovieDB.movies[a] = b;
 }
+
 
 if (personalMovieDB.count < 10) {
    console.log("Просмотрено довольно мало фильмов");
