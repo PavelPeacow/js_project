@@ -22,6 +22,7 @@ let personalMovieDB = {
     actors: {},
     genres: [],
     privat: false,
+
     start: function () {
         personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
 
@@ -33,6 +34,7 @@ let personalMovieDB = {
             personalMovieDB.count = +prompt("Сколько фильмов вы уже посмотрели?", "");
         }
     },
+
     toggleVisibleMyDB: function () {
         if (personalMovieDB.privat) {
             personalMovieDB.privat = false;
@@ -40,6 +42,7 @@ let personalMovieDB = {
             personalMovieDB.privat = true;
         }
     },
+
     showMyDB: function () {
         if (personalMovieDB.privat == false) {
             console.log(personalMovieDB);
@@ -47,21 +50,34 @@ let personalMovieDB = {
             console.log("Профиль приватный");
         }
     },
+
     writeYourGenres: function () {
-        for (let i = 1; i <= 3; i++) {
-            let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+        for (let i = 1; i < 2; i++) {
+/*             let genre = prompt(`Ваш любимый жанр под номером ${i}`);
 
             if (genre == '' || genre == null) {
                 console.log('You write wrong data');
                 i--;
             } else {
                 personalMovieDB.genres[i - 1] = genre;
+            } */
+
+            let genres = prompt(`Введите ваши любимые жанры через запятую`).toLowerCase();
+            if (genres == '' || genres == null) {
+                console.log('You write wrong data');
+                i--;
+            } else {
+                personalMovieDB.genres = genres.split(', ');
+                personalMovieDB.genres.sort();
             }
+
         }
+        
         personalMovieDB.genres.forEach((item, i) => {
             console.log(`Любимый жанр ${i + 1} - это ${item}`);
         });
     },
+
     rememberMyFIlms: function () {
         for (let i = 0; i < 2; i++) {
             let a = prompt("Один из последних просмотренных фильмов?", ""),
@@ -78,6 +94,7 @@ let personalMovieDB = {
             personalMovieDB.movies[a] = b;
         }
     },
+
     detecPersonalLevel: function () {
         if (personalMovieDB.count < 10) {
             console.log("Просмотрено довольно мало фильмов");
